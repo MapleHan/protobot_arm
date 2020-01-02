@@ -1,0 +1,7 @@
+controller_list:
+  - name: fake_arm_group_controller
+    joints:
+      - rot_joint
+      - uarm_joint
+      - larm_joint
+      - flange_joint
