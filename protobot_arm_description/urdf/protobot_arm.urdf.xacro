@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<robot name="protobot_arm" xmlns:xacro="http://ros.org/wiki/xacro">
+  <!--Arm body-->
+  <xacro:include filename="$(find protobot_arm_description)/urdf/protobot_arm.xacro"/>
+  <link name="world"/>
+  <xacro:create_arm connected_to="world" xyz="0 0 0.004"/>
+  <xacro:include filename="$(find protobot_arm_description)/urdf/protobot_arm.gazebo.xacro"/>
+  <xacro:include filename="$(find protobot_arm_description)/urdf/protobot_arm.transmission.xacro"/>
+</robot>

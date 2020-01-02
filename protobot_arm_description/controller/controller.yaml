@@ -1,0 +1,20 @@
+joint_state_controller:
+  type: joint_state_controller/JointStateController
+  publish_rate: 50 
+
+rot_joint_position_controller:
+  type: position_controllers/JointPositionController
+  joint: rot_joint
+  pid: {p: 100.0, i: 0.01, d: 10.0}
+uarm_joint_position_controller:
+  type: position_controllers/JointPositionController
+  joint: uarm_joint
+  pid: {p: 100.0, i: 0.01, d: 10.0}
+larm_joint_position_controller:
+  type: position_controllers/JointPositionController
+  joint: larm_joint
+  pid: {p: 100.0, i: 0.01, d: 10.0}
+flange_joint_position_controller:
+  type: position_controllers/JointPositionController
+  joint: flange_joint
+  pid: {p: 100.0, i: 0.01, d: 10.0}

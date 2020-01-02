@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <gazebo reference="arm_base_link">
+    <material>Gazebo/FlatBlack</material>
+  </gazebo>
+
+  <gazebo reference="rot_link">
+    <material>Gazebo/Grey</material>
+  </gazebo>
+  
+  <gazebo reference="umotor_link">
+    <material>Gazebo/Grey</material>
+  </gazebo>
+  
+  <gazebo reference="uarm_link">
+    <material>Gazebo/Grey</material>
+  </gazebo>
+
+  <gazebo reference="lmotor_link">
+    <material>Gazebo/Grey</material>
+  </gazebo>
+  
+  <gazebo reference="larm_link">
+    <material>Gazebo/Grey</material>
+  </gazebo>
+
+  <gazebo reference="fake_motor_link">
+    <material>Gazebo/Grey</material>
+  </gazebo>
+  
+  <gazebo reference="end_link">
+    <material>Gazebo/Grey</material>
+  </gazebo>
+
+  <gazebo reference="flange_motor_link">
+    <material>Gazebo/Grey</material>
+  </gazebo>
+
+  <transmission name="rot_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="rot_joint">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="rot_joint_motor">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  
+  <transmission name="uarm_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="uarm_joint">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="uarm_joint_motor">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  
+  <transmission name="larm_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="larm_joint">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="larm_joint_motor">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  
+  <transmission name="flange_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="flange_joint">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="flange_joint_motor">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <gazebo>
+    <plugin name="passive1_trans" filename="libroboticsgroup_gazebo_mimic_joint_plugin.so">
+      <joint>uarm_joint</joint>
+      <mimicJoint>passive1_joint</mimicJoint>
+      <multiplier>-1.000</multiplier>
+      <offset>0</offset>
+    </plugin>
+    <plugin name="passive2_trans" filename="libroboticsgroup_gazebo_mimic_joint_plugin.so">
+      <joint>larm_joint</joint>
+      <mimicJoint>passive2_joint</mimicJoint>
+      <multiplier>-1.000</multiplier>
+      <offset>0</offset>
+    </plugin>
+  </gazebo>
+</robot>
+
