@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<robot name="protobot_arm_gripper" xmlns:xacro="http://ros.org/wiki/xacro">
+  <!--Arm body-->
+  <xacro:include filename="$(find protobot_arm_description)/urdf/protobot_arm.xacro"/>
+  <link name="world"/>
+  <xacro:create_arm connected_to="world" xyz="0 0 0.004"/>
+  <xacro:include filename="$(find protobot_arm_description)/urdf/protobot_arm.gazebo.xacro"/>
+  <xacro:include filename="$(find protobot_arm_description)/urdf/protobot_arm.transmission.xacro"/>
+  <xacro:include filename="$(find protobot_gripper_description)/urdf/protobot_gripper.xacro"/>
+  <xacro:create_gripper connected_to="flange_motor_link" xyz="0 0 -0.012"/>
+  <xacro:include filename="$(find protobot_gripper_description)/urdf/protobot_gripper.transmission.xacro"/>
+</robot>
