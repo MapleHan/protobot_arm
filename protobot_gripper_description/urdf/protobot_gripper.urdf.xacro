@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<robot name="protobot_gripper" xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:include filename="$(find protobot_gripper_description)/urdf/protobot_gripper.xacro"/>
+  <xacro:create_gripper/>
+  <xacro:include filename="$(find protobot_gripper_description)/urdf/protobot_gripper.transmission.xacro"/>
+  <xacro:include filename="$(find protobot_gripper_description)/urdf/protobot_gripper.gazebo.xacro"/>
+</robot>

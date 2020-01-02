@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="paused" default="false"/>
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="paused" value="$(arg paused)"/>
+  </include>
+  <param
+    name="robot_description"
+    command="$(find xacro)/xacro '$(find protobot_gripper_description)/urdf/protobot_gripper.urdf.xacro'"/>
+  <rosparam file="$(find protobot_gripper_description)/controller/controller.yaml" command="load"/>
+  <node
+    name="spawn_model"
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args=" -urdf -param robot_description -model doufinger_hand"
+    output="screen" />
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="finger_joint_position_controller joint_state_controller"/>
+  <node
+    name="fake_joint_calibration"
+    pkg="rostopic"
+    type="rostopic"
+    args="pub /calibrated std_msgs/Bool true" />
+</launch>

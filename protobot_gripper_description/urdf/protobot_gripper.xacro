@@ -1,0 +1,177 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:macro name="create_gripper" params="connected_to:='' xyz:='0 0 0' rpy:='0 0 0'">
+    <xacro:unless value="${connected_to==''}">
+      <joint name="gripper_base_joint" type="fixed">
+        <parent link="${connected_to}"/>
+        <child link="gripper_base_link"/>
+        <origin rpy="${rpy}" xyz="${xyz}"/>
+      </joint>
+    </xacro:unless>
+    
+    <xacro:macro name="inertial_cuboid_with_pose" params="mass x_length y_length z_length *origin">
+      <inertial>
+        <xacro:insert_block name="origin"/>
+        <mass value="${mass}" />
+        <inertia ixx="${(1/12) * mass * (y_length*y_length + z_length*z_length)}" ixy="0.0" ixz="0.0"
+                 iyy="${(1/12) * mass * (x_length*x_length + z_length*z_length)}" iyz="0.0"
+                 izz="${(1/12) * mass * (x_length*x_length + y_length*y_length)}" />
+      </inertial>
+    </xacro:macro>
+    
+    <link
+      name="gripper_base_link">
+      <inertial_cuboid_with_pose
+        mass="0.2"
+        x_length="0.06"
+        y_length="0.06"
+        z_length="0.024">
+        <origin xyz="0 0 0"  rpy="0 0 0"/>
+      </inertial_cuboid_with_pose>
+      <visual>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <box size="0.06 0.06 0.024"/>
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="0.75294 0.75294 0.75294 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <box size="0.06 0.06 0.024"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link
+      name="finger1_link">
+      <inertial>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <mass
+          value="6.9625730e-02" />
+        <inertia
+          ixx="1.5879474e-04"
+          ixy="1.3763814e-08"
+          ixz="-1.2889963e-04"
+          iyy="3.3239323e-04"
+          iyz="5.8014283e-09"
+          izz="2.8244275e-04" />
+      </inertial>
+      <visual>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://protobot_gripper_description/meshes/finger_link.STL"/>
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="0.75294 0.75294 0.75294 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://protobot_gripper_description/meshes/finger_link.STL"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <joint
+      name="finger1_joint"
+      type="revolute">
+      <origin
+        xyz="0.01 0 0"
+        rpy="3.1416 0 0" />
+      <parent
+        link="gripper_base_link" />
+      <child
+        link="finger1_link" />
+      <axis
+        xyz="0 1 0" />
+      <limit
+        lower="-0.7"
+        upper="0.3"
+        effort="5"
+        velocity="1"/>
+      <dynamics damping="1.0e-6" friction="8.0e-1"/>
+    </joint>
+
+    <link
+      name="finger2_link">
+      <inertial>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <mass
+          value="6.9625730e-02" />
+        <inertia
+          ixx="1.5879474e-04"
+          ixy="1.3763814e-08"
+          ixz="-1.2889963e-04"
+          iyy="3.3239323e-04"
+          iyz="5.8014283e-09"
+          izz="2.8244275e-04" />
+      </inertial>
+      <visual>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://protobot_gripper_description/meshes/finger_link.STL"/>
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="0.75294 0.75294 0.75294 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://protobot_gripper_description/meshes/finger_link.STL"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <joint
+      name="finger2_joint"
+      type="revolute">
+      <origin
+        xyz="-0.01 0 0"
+        rpy="3.1416 0 3.1416" />
+      <parent
+        link="gripper_base_link" />
+      <child
+        link="finger2_link" />
+      <axis
+        xyz="0 1 0" />
+      <limit
+        lower="-0.7"
+        upper="0.3"
+        effort="5"
+        velocity="1"/>
+      <dynamics damping="1.0e-6" friction="8.0e-1"/>
+      <mimic joint="finger1_joint" multiplier="1"/>
+    </joint>
+  </xacro:macro>
+</robot>

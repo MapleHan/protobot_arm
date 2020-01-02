@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+  <gazebo reference="hand_base_link">
+    <!--material>Gazebo/Blue</material-->
+    <!--turnGravityOff>False</turnGravityOff-->
+  </gazebo>
+
+  <gazebo reference="finger1_link">
+    <!--material>Gazebo/Blue</material-->
+    <!--turnGravityOff>False</turnGravityOff-->
+    <mu1>0.8</mu1>
+    <mu2>0.8</mu2>
+    <!--kp>1000000</kp>
+    <kd>1.0</kd-->
+  </gazebo>
+
+  <gazebo reference="finger2_link">
+    <!--material>Gazebo/Blue</material-->
+    <!--turnGravityOff>False</turnGravityOff-->
+    <mu1>0.8</mu1>
+    <mu2>0.8</mu2>
+    <!--kp>1000000</kp>
+    <kd>1.0</kd-->
+  </gazebo>
+
+  <transmission name="finger1_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="finger1_joint">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <!--hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface-->
+    </joint>
+    <actuator name="finger1_joint_motor">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <!--hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface-->
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+ 
+  <gazebo>
+    <plugin name="finger2_trans" filename="libroboticsgroup_gazebo_mimic_joint_plugin.so">
+      <joint>finger1_joint</joint>
+      <mimicJoint>finger2_joint</mimicJoint>
+      <multiplier>1</multiplier>
+      <offset>0</offset>
+    </plugin>
+  </gazebo>
+ </robot>
