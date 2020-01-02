@@ -25,10 +25,12 @@ rostopic pub -1 /rot_joint_position_controller/command std_msgs/Float64 "data: 1
 ```bash
 roslaunch protobot_arm_gripper_moveit_config demo.launch   
 ```
+![arm_moveit](arm_moveit.gif "arm_moveit")   
 ***Moveit demo execution in gazebo***   
 ```bash
 roslaunch protobot_arm_gripper_moveit_config demo_gazebo.launch   
 ```
+![arm_moveit_with_gazebo](arm_moveit_with_gazebo.gif "arm_moveit_with_gazebo")   
 ## 真实机械臂Moveit控制  
 1. 下载pd_drive or pt_drive到机械臂控制器，将控制器USB口插入电脑     
 2. 校准机械臂   
