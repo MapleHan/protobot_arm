@@ -1,0 +1,1 @@
+rosrun gazebo_ros spawn_model -file /home/maple/.gazebo/models/beer_small/model.sdf -sdf -x 0.5 -model beer01
