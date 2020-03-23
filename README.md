@@ -35,12 +35,12 @@ roslaunch protobot_arm_gripper_moveit_config demo_gazebo.launch
 1. 下载pd_drive or pt_drive到机械臂控制器，将控制器USB口插入电脑     
 2. 校准机械臂   
    ```bash
-   roslaunch protobot_arm_gripper_bringup drive.launch  calibration:=true   
+   roslaunch protobot_arm_gripper_bringup driver.launch  calibration:=true   
    roslaunch protobot_arm_gripper_bringup protobot_arm_gripper_bringup.launch calibration:=true  
    ```
    拖动滑块条使机械臂转动至竖直状态，然后Ctrl+C关闭上述两个程序   
 3. 控制机械臂运动  
    ```bash
-   roslaunch protobot_arm_gripper_bringup drive.launch   
+   roslaunch protobot_arm_gripper_bringup driver.launch   
    roslaunch protobot_arm_gripper_bringup protobot_arm_gripper_bringup.launch  
    ```  
