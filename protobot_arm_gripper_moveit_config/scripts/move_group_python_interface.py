@@ -68,6 +68,7 @@ class MoveGroupPythonIntefaceTutorial(object):
     self.arm_group.set_named_target('home')
     self.arm_group.go(wait=True)
     self.hand_group.go([0,0,0],wait=True)
+    #数组长度为hand关节个数
 
   def go_to_joint_state(self,joint_goal):
     move_group = self.arm_group
