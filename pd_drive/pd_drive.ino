@@ -24,6 +24,8 @@ Trajectory current_tra;                             //机械臂运动轨迹数�
 Servo gripper;                                      //机械手舵机对象
 const float KGripperInitPWM = 90;                   //gripper init position PWM
 const float KGripperInitRad = 0;                    //gripper init position radian
+const float kServoDistance = 270;
+const int kServoDir = -1;
 int gripper_cpwm = KGripperInitPWM;                 //gripper current position
 int gripper_tpwm = gripper_cpwm;                    //gripper target position
 bool gripper_state = STOP;                          //gripper state,STOP or MOVE
