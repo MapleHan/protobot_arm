@@ -35,7 +35,7 @@ void pubJointState()
    {
       joint_state_msg.position[i] = arm.getJoint(i).getPosition();
    }
-   joint_state_msg.position[arm.kJointNumber] = (gripper_cpwm-KGripperInitPWM)/180.0*PI+KGripperInitRad;
+   joint_state_msg.position[arm.kJointNumber] = kServoDir*(gripper_cpwm-KGripperInitPWM)/180.0*PI/(180.0/kServoDistance)+KGripperInitRad;
    joint_state_pub.publish( &joint_state_msg );
 }
 
@@ -92,7 +92,7 @@ void addWaypoint(const std_msgs::Float32MultiArray& point_msg)
     else if(point_msg.data_length==kGripperJointNumber+1)
     {
       gripper_state = MOVE;
-      gripper_tpwm = (point_msg.data[0]- KGripperInitRad)/PI*180+KGripperInitPWM;
+      gripper_tpwm = kServoDir*(point_msg.data[0]- KGripperInitRad)/PI*180.0*(180.0/kServoDistance)+KGripperInitPWM;
     }
   }
   nh.spinOnce();
