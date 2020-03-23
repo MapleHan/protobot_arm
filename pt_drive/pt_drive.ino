@@ -26,7 +26,7 @@ void setup()
 {
   pinMode(LED_BUILTIN,OUTPUT);
   digitalWrite(LED_BUILTIN,LOW);
-	SerialUSB.begin(115200);
+	SerialUSB.begin(57600);
   armInit();
   topicInit();
 }
