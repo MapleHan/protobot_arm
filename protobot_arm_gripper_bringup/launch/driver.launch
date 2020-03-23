@@ -8,7 +8,7 @@
     <node unless="$(arg calibration)" name="gripper_action_service_node" pkg="protobot_arm_gripper_bringup" type="gripper_command_action_service_node" respawn="true" output="screen"/>
     <node name="driver_serial_node" pkg="rosserial_arduino" type="serial_node.py" respawn="true" output="screen">
       <param name="port" value="/dev/ttyACM0"/>
-      <param name="baud" value="115200"/>
+      <param name="baud" value="57600"/>
     </node>
   </group>
 </launch>
