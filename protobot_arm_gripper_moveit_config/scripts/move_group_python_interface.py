@@ -67,7 +67,7 @@ class MoveGroupPythonIntefaceTutorial(object):
   def reset(self):
     self.arm_group.set_named_target('home')
     self.arm_group.go(wait=True)
-    self.hand_group.go([0,0,0],wait=True)
+    self.hand_group.go([0,0],wait=True)
     #数组长度为hand关节个数
 
   def go_to_joint_state(self,joint_goal):
@@ -146,7 +146,7 @@ class MoveGroupPythonIntefaceTutorial(object):
     box_pose = geometry_msgs.msg.PoseStamped()
     box_pose.header.frame_id = self.eef_link
     box_pose.pose.orientation.w = 1.0
-    box_pose.pose.position.y = -0.2 # slightly above the end effector
+    box_pose.pose.position.z = -0.1 # slightly above the end effector
     box_name = "box"
     scene.add_box(box_name, box_pose, size=(0.03, 0.03, 0.03))
     self.box_name=box_name
@@ -198,11 +198,11 @@ def main():
 
     print "============ Press `Enter` to execute a movement using a joint state goal ..."
     raw_input()
-    tutorial.go_to_joint_state([0,0.78,-0.78,0,0,0.78])
+    tutorial.go_to_joint_state([0,0.2,0.2,0,0,0.2])
 
     print "============ Press `Enter` to execute a movement using a pose goal ..."
     raw_input()
-    tutorial.go_to_position_goal(0.4,0.2,0.6)
+    tutorial.go_to_position_goal(0.2,0.2,0.6)
 
     print "============ Press `Enter` to plan and display a Cartesian path ..."
     raw_input()
@@ -223,6 +223,8 @@ def main():
     print "============ Press `Enter` to attach a Box to the Panda robot ..."
     raw_input()
     tutorial.attach_box()
+    tutorial.hand_group.go([-0.3,-0.3],wait=True)
+    #数组长度为hand关节个数
 
     print "============ Press `Enter` to plan and execute a path with an attached collision object ..."
     raw_input()
@@ -232,6 +234,8 @@ def main():
     print "============ Press `Enter` to detach the box from the Panda robot ..."
     raw_input()
     tutorial.detach_box()
+    tutorial.hand_group.go([0,0],wait=True)
+    #数组长度为hand关节个数
 
     print "============ Press `Enter` to remove the box from the planning scene ..."
     raw_input()
@@ -245,6 +249,5 @@ def main():
 
 if __name__ == '__main__':
   main()
-
 
 
