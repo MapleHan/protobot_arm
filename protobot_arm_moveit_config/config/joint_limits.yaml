@@ -4,12 +4,12 @@
 joint_limits:
   flange_joint:
     has_velocity_limits: true
-    max_velocity: 1
+    max_velocity: 0.25
     has_acceleration_limits: false
     max_acceleration: 0
   larm_joint:
     has_velocity_limits: true
-    max_velocity: 1
+    max_velocity: 0.25
     has_acceleration_limits: false
     max_acceleration: 0
   passive1_joint:
@@ -24,11 +24,11 @@ joint_limits:
     max_acceleration: 0
   rot_joint:
     has_velocity_limits: true
-    max_velocity: 1
+    max_velocity: 0.25
     has_acceleration_limits: false
     max_acceleration: 0
   uarm_joint:
     has_velocity_limits: true
-    max_velocity: 0.5
+    max_velocity: 0.25
     has_acceleration_limits: false
     max_acceleration: 0
