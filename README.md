@@ -8,6 +8,12 @@
 **pd_drive**:”舵机版机械手“的机械臂Due控制版Arduino程序      
 **pt_drive**:”步进版机械手“的机械臂Due控制版Arduino程序      
 
+***准备工作***  
+```bash
+   sudo apt update
+   sudo apt upgrade
+   sudo apt-get install ros-melodic-moveit*
+````  
 ## 机械臂模型文件展示   
 ***Display in Rviz,使用滑块条拖动关节转动***   
 ```bash
