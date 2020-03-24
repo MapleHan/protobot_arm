@@ -16,7 +16,7 @@ const int kArmJointNumber = 4;                      //宏定义机械臂关节�
 const char kArmJointName[kArmJointNumber][20] = { "rot_joint","uarm_joint","larm_joint","flange_joint"};
 const int kGripperJointNumber = 1;                  //机械手关节数量即自由度
 const char kGripperJointName[kGripperJointNumber][20] = {"finger1_joint" };
-const int KGripperPin = 3;                          //机械手舵机引脚定义
+const int KGripperPin = 55;                          //机械手舵机引脚定义
 #define MOVE  true
 #define STOP  false
 JointGroup arm = JointGroup(kArmJointNumber);				//机械臂运动组对象
