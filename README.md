@@ -49,3 +49,7 @@ sudo apt-get install ros-melodic-gripper-action-controller
    roslaunch protobot_arm_gripper_bringup driver.launch   
    roslaunch protobot_arm_gripper_bringup protobot_arm_gripper_bringup.launch  
    ```  
+## 使用python程序控制机械臂运动 
+   ```bash
+   rosrun protobot_arm_gripper_moveit_config move_group_python_interface.py
+   ```  
