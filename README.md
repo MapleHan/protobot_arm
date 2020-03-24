@@ -31,6 +31,11 @@ roslaunch protobot_arm_gripper_moveit_config demo.launch
 roslaunch protobot_arm_gripper_moveit_config demo_gazebo.launch   
 ```
 ![arm_moveit_with_gazebo](arm_moveit_with_gazebo.gif "arm_moveit_with_gazebo")   
+***错误解决***   
+```bash
+sudo apt-get install ros-melodic-joint-trajectory-controller
+sudo apt-get install ros-melodic-gripper-action-controller
+```   
 ## 真实机械臂Moveit控制  
 1. 下载pd_drive or pt_drive到机械臂控制器，将控制器USB口插入电脑     
 2. 校准机械臂   
